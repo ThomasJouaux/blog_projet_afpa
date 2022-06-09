@@ -1,7 +1,7 @@
 <?php
 include 'db.php';
 $connexion = ConnexionBase();
-
+// recuperation de la valeurs des input//
     $title = (isset($_POST['title']) && $_POST['title'] != "") ? $_POST['title'] : NULL;
     var_dump($title);
     $article =  (isset($_POST['article']) && $_POST['article'] != "") ? $_POST['article'] : NULL;
