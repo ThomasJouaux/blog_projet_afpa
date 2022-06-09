@@ -18,26 +18,30 @@ $requete->closeCursor();
 ?>
 
 <body>
-  <a class="btn btn-primary" href="connexion_form.php" role="button">Connexion</a>
-  <a class="btn btn-primary" href="inscription_form.php" role="button">Link</a>
+  <!-- Bouton ecrire un article  -->
   <a class="btn btn-primary" href="article_form.php" role="button">Ecrire un article</a>
 </body>
 <div class="container-fluid">
 
 
-
+<!-- affichage des choses contenue dans la bdd -->
     <?php foreach ($value as $data) {
     ?>
   <div class="card border-0 align-left col-4" id="card" style="width: 30%;">
 
     <div class="row col-">
-
+<!-- Affichage de l'image  -->
       <img class="col-6 max-width:20%" src="img/<?= $data->article_picture; ?>" alt="<?= $data->article_picture; ?>" title=" <?= $data->article_form ?>">
       <div class="card-body col-">
+        <!-- Affichage du titre de l'article  -->
         <p class="card-title text-right col-"><small><b><?= $data->title_art; ?></b></small>
+        <!-- Affichage du contenue de l'article -->
         <p class="card-text text-right col-"><?= $data->article_complet; ?> </p>
-        <?= '<p class="card-text text-right col-"><small><b>Année : </b>' . $data->date_art . '</p></small>'; ?>
+        <!-- Affichage de la date a laquelle l'article a ete ecrit ou modifier -->
+        <?= '<p class="card-text text-right col-"><small><b>Date : </b>' . $data->date_art . '</p></small>'; ?>
+        <!-- Bouton Modifier -->
         <a href="modif_article.php?id=<?php echo $data->article_id; ?>" id="Btn_details" class="btn btn-primary  col-">Modifier</a>
+        
       </div>
     </div>
   </div>

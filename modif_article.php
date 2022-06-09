@@ -36,10 +36,10 @@ $requete1->closeCursor();
 <form action="article_modif_script.php" method="post" enctype="multipart/form-data">
     <div class="row col-12">
         <p id="inputTxt"> titre </p>
-
+<!-- Titre de l'article -->
         <input class="form-control" name="titleArt" type="text" id="inputModif" placeholder="<?php echo $article->title_art ?>">
     </div>
-
+<!-- Contenue de l'article -->
     <div class="row col-12">
         <p id="inputTxt"> Article complet </p>
         <textarea class="form-control" name="article" id="exampleFormControlTextarea1" rows="3" placeholder="<?= $article->article_complet ?>"></textarea>
@@ -47,16 +47,23 @@ $requete1->closeCursor();
 
     </div>
     </div>
+    <!-- Bouton ajout d'image -->
 
     <p class="col-" id="inputTxtPicture">Picture</p>
     <div class="inputFile">
         <input type="file" id="imgModif" name="imageUploadModif" id="buttonFile">
-
+      
+       
+        <!-- Affichage de l'image  -->
         <div class="row " id="pictureModif"><?= '<img src="img/' . $article->article_picture . '" />'  ?></div>
         <div class="row" id="buttonModif">
+            <!-- Bouton modifier -->
             <button class="btn btn-primary" id="modifButton" type="submit">Modifier</button>
+            <!-- Bouton Retour -->
             <a class="btn btn-primary" id="retourButton" href="index.php" role="button">Retour</a>
-
+            <input id="prodId" name="id" type="hidden" value="<?php echo $article -> article_id ?>">
+            <!-- Bouton Supprimer -->
+            <a class="btn btn-primary col-" href="suppr_article.php?id=<?php echo $article->article_id; ?>"role="button">Supprimer</a>
 
             </body>
 

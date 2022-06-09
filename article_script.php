@@ -38,3 +38,7 @@ $requete = $connexion -> prepare("INSERT INTO articles (title_art , date_art , a
 ('$title', '$date' , '$fileName' , '$article' )");
 $requete-> execute();
 $requete->closeCursor();
+
+if($requete){
+    header('Refresh :0 ; url=index.php');
+}

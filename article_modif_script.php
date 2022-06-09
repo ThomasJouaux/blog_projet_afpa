@@ -2,11 +2,12 @@
 include 'db.php';
 $connexion = ConnexionBase();
 $id = $_POST['id'];
+var_dump($id);
 $title = (isset($_POST['title']) && $_POST['title'] != "") ? $_POST['title'] : NULL;
-var_dump($title);
+
 $article = (isset($_POST['article']) && $_POST['article'] != "") ? $_POST['article'] : NULL;
 
-
+$date = date('l jS \of F Y h:i:s A');
 
 
 $sizeMax =  1048576;
@@ -31,4 +32,12 @@ $sizeMax =  1048576;
             echo "Upload reussi";
         }
     }
-
+    
+$article = str_replace("'", "''", $article);
+$requete = $connexion -> prepare("UPDATE articles SET title_art = '$title' , date_art = '$date' , article_picture = '$fileName' , article_complet = '$article' 
+WHERE article_id = '$id' ");
+$requete->execute();
+$requete->closeCursor();
+if($requete){
+    header('Refresh: 0 ; url=index.php');
+}
